@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Fire Extension ",
+  "name": "Fire Extension",
   "description": "Base Level Extension",
   "version": "0.0.1",
   "action": {
@@ -15,19 +15,12 @@
   "background": {
     "service_worker": "Background.js"
   },
-  "web_accessible_resources": [
-    {
-      "resources": ["images/*"],
-      "matches": ["<all_urls>"]
-    }
-  ],
   "content_scripts": [
     {
       "js": ["Scripts/script.js"],
       "matches": ["<all_urls>"]
     }
   ],
-  "permissions": [],
   "commands": {
     "_execute_action": {
       "suggested_key": {
