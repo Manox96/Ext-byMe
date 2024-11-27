@@ -15,21 +15,17 @@
   "background": {
     "service_worker": "Background.js"
   },
-  "content_scripts": [
-    {
-      "js": ["Scripts/script.js"],
-      "matches": ["<all_urls>"]
-    }
-  ],
   "commands": {
     "_execute_action": {
       "suggested_key": {
-        "mac": "Command+B"
+        "mac": "Command+B",
+        "windows": "Ctrl+B"
       }
     }
   },
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "storage"
   ]
 }

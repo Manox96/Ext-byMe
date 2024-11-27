@@ -1,22 +1,14 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//     const toggleCheckbox = document.getElementById('checkBtn');
+document.addEventListener('DOMContentLoaded', () => {
+    const checkBtn = document.getElementById('checkBtn');
 
-//     if (toggleCheckbox) {
-//         const extensionEnabled = localStorage.getItem('extensionEnabled') === 'true';
-//         toggleCheckbox.checked = extensionEnabled;
+    chrome.storage.sync.get('runScript', function(data) {
+        checkBtn.checked = data.runScript || false;
+    });
 
-//         toggleCheckbox.addEventListener('change', () => {
-//             const isEnabled = toggleCheckbox.checked;
-//             localStorage.setItem('extensionEnabled', isEnabled);
-//             console.log(`Extension ${isEnabled ? 'activée' : 'désactivée'}`);
-
-//             // Envoyer un message au script de fond pour démarrer/arrêter la logique
-//             chrome.runtime.sendMessage({
-//                 action: isEnabled ? 'start' : 'pause'
-//             });
-//         });
-//     }
-// });
-
+    checkBtn.addEventListener('change', (event) => {
+        let IsChecked = event.target.checked;
+        chrome.storage.sync.set({ runScript: IsChecked });
+    });
+});
 
 console.log('Popup script loaded');
