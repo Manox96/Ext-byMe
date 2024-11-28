@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Fire Extension ❤️",
   "description": "Base Level Extension",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "action": {
     "default_popup": "Popup/popup.html"
   },
@@ -12,6 +12,17 @@
     "48": "images/fire-1.png",
     "128": "images/fire-1.png"
   },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "service_worker": "Background.js"
   },
@@ -24,8 +35,10 @@
     }
   },
   "permissions": [
+    "tabs",
     "activeTab",
     "scripting",
-    "storage"
+    "storage",
+    "notifications"
   ]
 }
