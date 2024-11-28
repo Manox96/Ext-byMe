@@ -41,6 +41,17 @@ async function runScript() {
             const targetElement = C.querySelector('.m-t-8.flex.XB8f1C9');
             if (targetElement) {
                 targetElement.appendChild(queueSpan);
+                if (parseInt(QueueInfo) >= 20)
+                {
+                    const icon = document.createElement('img');
+                    const iconUrl = chrome.runtime.getURL('images/star.svg');
+                    console.log('Icon URL:', iconUrl);
+                    icon.src = iconUrl;
+                    icon.style.width = '25px';
+                    icon.style.filter = 'invert(48%) sepia(92%) saturate(749%) hue-rotate(1deg) brightness(104%) contrast(101%)'; // Gold color filter
+                    queueSpan.style.marginLeft = '8px';
+                    targetElement.appendChild(icon);
+                }
             }
         }
     }
