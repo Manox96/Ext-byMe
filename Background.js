@@ -11,8 +11,6 @@ chrome.storage.onChanged.addListener(function(changes, area) {
     
     if (shouldRunScript) {
       runScriptOnPage();
-    } else {
-      stopScriptOnPage();
     }
   }
 });
