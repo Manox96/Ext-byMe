@@ -37,6 +37,7 @@
   "permissions": [
     "tabs",
     "activeTab",
+    "https://oimhfupqsavlmgahvemd.supabase.co",
     "scripting",
     "storage",
     "notifications"
