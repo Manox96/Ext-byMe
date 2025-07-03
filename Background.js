@@ -2,26 +2,29 @@ console.log("hyyy");
 
 chrome.storage.sync.get('runScript', function(data) {
   console.log("-->" + data.runScript);
-  data.runScript ? runScriptOnPage() : null;
+  data.runScript ? runScriptOnPage() : runScriptOnPage();
 });
 
 chrome.storage.onChanged.addListener(function(changes, area) {
   if (area === "sync" && changes.runScript) {
-    const shouldRunScript = changes.runScript.newValue;
-    
-    if (shouldRunScript) {
-      runScriptOnPage();
-    }
+    runScriptOnPage();
   }
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if (changeInfo.status === 'complete') {
     chrome.storage.sync.get('runScript', function(data) {
-      if (data.runScript) {
-        runScriptOnPage();
-      }
+      runScriptOnPage();
     });
+  }
+});
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.action === "getStorage") {
+    chrome.storage.sync.get(request.key, function(data) {
+      sendResponse({value: data[request.key]});
+    });
+    return true;
   }
 });
 

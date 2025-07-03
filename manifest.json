@@ -12,16 +12,28 @@
     "48": "images/fire-1.png",
     "128": "images/fire-1.png"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.fiverr.com/*",
+        "https://www.fiverr.com/*"
+      ],
+      "js": ["Scripts/script.js"],
+      "run_at": "document_idle"
+    }
+  ],
   "web_accessible_resources": [
     {
       "resources": [
         "images/*"
       ],
-      "matches": ["<all_urls>"]
+      "matches": ["*://*.fiverr.com/*", "https://www.fiverr.com/*"]
     }
   ],
   "host_permissions": [
-    "<all_urls>"
+    "*://*.fiverr.com/*",
+    "https://www.fiverr.com/*",
+    "https://oimhfupqsavlmgahvemd.supabase.co/*"
   ],
   "background": {
     "service_worker": "Background.js"
